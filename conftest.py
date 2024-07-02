@@ -9,6 +9,7 @@ ssl.create_default_https_context = ssl.create_unverified_context
 # CONSTANTS
 
 HOME_PAGE = 'https://phptravels.com/demo/'
+LOGIN_PAGE = 'https://phptravels.net/login'
 
 @pytest.fixture
 def driver():
@@ -30,3 +31,7 @@ def driver():
 @pytest.fixture
 def home_url():
     return HOME_PAGE
+
+@pytest.fixture
+def login_url():
+    return LOGIN_PAGE
