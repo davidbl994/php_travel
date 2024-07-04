@@ -9,4 +9,6 @@ def test_load_login_page(driver, login_url):
     login_page.open_login_page(login_url)
 
     # Check that the login button is enabled
+    print("Verifying that the login button is enabled...")
     assert login_page.is_login_button_enabled(), "Login button should be enabled when the page loads"
+    print("Login button is enabled!")
