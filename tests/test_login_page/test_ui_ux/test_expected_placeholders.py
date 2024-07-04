@@ -1,3 +1,4 @@
+# Verify that the placeholder texts for username and password fields are correct.
 import pytest
 from pages.login_page import LoginPage
 
