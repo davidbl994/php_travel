@@ -1,3 +1,4 @@
+# Verify that all elements (username field, password field, login button, etc.) are present on the login page.
 import utils.locators
 from pages.login_page import LoginPage
 from utils.locators import Login
