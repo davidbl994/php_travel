@@ -1,3 +1,4 @@
+# Verify that the login page loads successfully
 import pytest
 from pages.login_page import LoginPage
 
