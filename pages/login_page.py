@@ -140,7 +140,6 @@ class LoginPage:
         assert "Invalid Login" in error_message, "Error message not found"
 
     def insert_sql_string(self, driver):
-        # SQL injection strings
         sql_injection_username = "' OR '1'='1"
         sql_injection_password = "' OR '1'='1"
 
@@ -153,7 +152,6 @@ class LoginPage:
         login_button.click()
 
         try:
-            # Wait for the error message to appear
             WebDriverWait(driver, 10).until(EC.visibility_of_element_located(Login.INVALID_LOGIN_POP_UP))
             error_message = driver.find_element(Login.INVALID_LOGIN_POP_UP)
             assert "Invalid Login" in error_message.text, "Login should fail with SQL injection attempt"
