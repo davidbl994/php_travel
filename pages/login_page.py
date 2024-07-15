@@ -38,8 +38,7 @@ class LoginPage:
         return self.wait.until(EC.visibility_of_element_located(locator))
 
     def is_smartphone_img_displayed(self):
-        smartphone_element = self.driver.find_element(*Login.SMARTPHONE_IMAGE)
-        return smartphone_element.is_displayed()
+        return self.driver.find_element(*Login.SMARTPHONE_IMAGE).is_displayed()
 
     def insert_email(self, username):
         email = self.driver.find_element(*Login.EMAIL_ADDRESS)
