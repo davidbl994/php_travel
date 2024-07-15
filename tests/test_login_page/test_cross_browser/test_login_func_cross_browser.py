@@ -1,12 +1,7 @@
-# pytest -vs test_login_func_cross_browser.py --browser=firefox
-
-import logging
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
+from pages.login_page import logger
 from utils.config import USERNAME, PASSWORD
-
-logger = logging.getLogger(__name__)
-
 
 def test_login_functionality(driver, login_url, dashboard_url):
     """
@@ -24,7 +19,6 @@ def test_login_functionality(driver, login_url, dashboard_url):
     login_page.open_login_page(login_url)
     assert driver.current_url == login_url, "Failed to navigate to the login page"
 
-    # Insert email and password, and click login button
     logger.info("Inserting email...")
     login_page.insert_email(USERNAME)
     logger.info("Inserting password...")
