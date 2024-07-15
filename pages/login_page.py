@@ -161,13 +161,10 @@ class LoginPage:
             assert False, f"SQL injection test failed: {e}"
 
     def insert_xss_payloads(self, driver):
-        # xss payloads
         xss_payload = "<script>alert('XSS')</script>"
-
         email_field = self.get_element(Login.EMAIL_ADDRESS)
         password_field = self.get_element(Login.PASSWORD)
         login_btn = self.get_element(Login.LOGIN_BTN)
-
         email_field.send_keys(xss_payload)
         password_field.send_keys(xss_payload)
         login_btn.click
