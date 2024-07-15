@@ -1,3 +1,4 @@
+import logging
 import os
 import time
 from PIL import Image, ImageChops
@@ -5,6 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from utils.locators import Login
 from axe_selenium_python import Axe
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class LoginPage:
     def __init__(self, driver):
@@ -21,9 +26,10 @@ class LoginPage:
     def open_login_page(self, url):
         try:
             self.driver.get(url)
+            logger.info("Login page opened successfully.")
             return True
         except Exception as e:
-            print(f"Failed to open the login page: {e}")
+            logger.error(f"Failed to open the login page {e}")
             return False
 
     def get_element(self, locator):
@@ -76,9 +82,9 @@ class LoginPage:
         try:
             login_title = self.driver.title  # Get the page title directly
             assert 'Login' in login_title, f"'Login' not found in page title: {login_title}"
-            print('Login title exists!')
+            logger.info('Login title exists!')
         except Exception as e:
-            print('Login title is missing:', e)
+            logger.error('Login title is missing:', e)
 
     def get_email_placeholder(self):
         email_field = self.get_element(Login.EMAIL_ADDRESS)
@@ -132,18 +138,12 @@ class LoginPage:
     def get_pop_up_warning(self):
         try:
             # Wait for the alert to be present
-            WebDriverWait(10).until(EC.alert_is_present())
-
-            # Switch to the alert
+            WebDriverWait(self.driver, 10).until(EC.alert_is_present())
             alert = self.driver.switch_to.alert
-
-            # Print the alert text
-            print("Uključite znak "@" u e-adresu.", alert.text)
-
-            # Accept the alert to close it
+            logger.info("Uključite znak "@" u e-adresu.", alert.text)
             alert.accept()
         except:
-            print("No alert present")
+            logger.info("No alert present")
 
     def get_error_message(self, driver):
         time.sleep(0.5)
