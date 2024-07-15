@@ -1,11 +1,6 @@
 import json
 import time
-import logging
-
-logger = logging.getLogger(__name__)
-
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+from pages.login_page import logger
 
 def test_login_page_load_time(driver, login_url):
     """
