@@ -17,6 +17,8 @@ class LoginPage:
         self.wait = WebDriverWait(self.driver, 10)
         self.baseline_dir = "baselines/"
         self.diff_dir = "diffs/"
+        os.makedirs(self.baseline_dir, exist_ok=True)
+        os.makedirs(self.baseline_dir, exist_ok=True)
 
     def wait_for_element(self, locator, timeout=10):
         return WebDriverWait(self.driver, timeout).until(
@@ -115,14 +117,6 @@ class LoginPage:
 
     def take_screenshot(self, file_path):
         self.driver.save_screenshot(file_path)
-
-    # Directories for baselines and diffs
-    baseline_dir = "baselines/"
-    diff_dir = "diffs/"
-
-    # Ensure directories exist
-    os.makedirs(baseline_dir, exist_ok=True)
-    os.makedirs(diff_dir, exist_ok=True)
 
     # Function to compare images
     def compare_images(img1_path, img2_path, diff_path):
