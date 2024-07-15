@@ -60,12 +60,8 @@ class LoginPage:
         password.send_keys("notdemouser")
 
     def login(self, username, password):
-        email = self.driver.find_element(*Login.EMAIL_ADDRESS)
-        email.send_keys(username)
-        email.clear()
-        password_field = self.driver.find_element(*Login.PASSWORD)
-        password_field.clear()
-        password_field.send_keys(password)
+        self.insert_email(username)
+        self.insert_password(password)
 
     def select_remember_me(self):
         remember_chck_box = self.driver.find_element(*Login.REMEMBER_CHECK_BOX)
