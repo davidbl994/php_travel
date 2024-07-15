@@ -126,7 +126,6 @@ class LoginPage:
 
     def get_pop_up_warning(self):
         try:
-            # Wait for the alert to be present
             WebDriverWait(self.driver, 10).until(EC.alert_is_present())
             alert = self.driver.switch_to.alert
             logger.info("Uključite znak "@" u e-adresu.", alert.text)
