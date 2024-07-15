@@ -173,7 +173,6 @@ class LoginPage:
         login_btn.click
 
     def submit_forged_request(self, username, password):
-        # Bypass normal form submission to simulate CSRF attack
         script = f"""
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "{self.driver.current_url}", true);
