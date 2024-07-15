@@ -113,12 +113,10 @@ class LoginPage:
     def take_screenshot(self, file_path):
         self.driver.save_screenshot(file_path)
 
-    # Function to compare images
     def compare_images(img1_path, img2_path, diff_path):
         img1 = Image.open(img1_path)
         img2 = Image.open(img2_path)
         diff = ImageChops.difference(img1, img2)
-
         if diff.getbbox():
             diff.save(diff_path)
             return False
