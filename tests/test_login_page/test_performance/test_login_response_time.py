@@ -1,15 +1,11 @@
 import time
 import json
-import logging
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from pages.login_page import LoginPage
+from pages.login_page import logger
 from utils.config import USERNAME, PASSWORD
 
-logger = logging.getLogger(__name__)
-
-
-def test_login_response_time(driver, login_url, dashboard_url):
+def test_login_response_time(driver, login_page, dashboard_url):
     """
     Test to measure the response time of a successful login attempt and ensure it is within acceptable limits.
 
@@ -18,8 +14,6 @@ def test_login_response_time(driver, login_url, dashboard_url):
         login_url (str): The URL of the login page.
         dashboard_url (str): The URL of the dashboard page, indicating successful login.
     """
-    login_page = LoginPage(driver)
-    login_page.open_login_page(login_url)
 
     login_page.insert_email(USERNAME)
     login_page.insert_password(PASSWORD)
