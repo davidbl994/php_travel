@@ -1,16 +1,13 @@
 import time
 import json
-import logging
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from pages.login_page import LoginPage
 from utils.config import INVALID_USERNAME, INVALID_PASSWORD
+from pages.login_page import logger
 
-logger = logging.getLogger(__name__)
 
-
-def test_invalid_login_response_time(driver, login_url):
+def test_invalid_login_response_time(driver, login_page):
     """
     Test to measure the response time of an invalid login attempt and ensure it is within acceptable limits.
 
@@ -18,8 +15,6 @@ def test_invalid_login_response_time(driver, login_url):
         driver (WebDriver): The Selenium WebDriver instance.
         login_url (str): The URL of the login page.
     """
-    login_page = LoginPage(driver)
-    login_page.open_login_page(login_url)
 
     login_page.insert_email(INVALID_USERNAME)
     login_page.insert_password(INVALID_PASSWORD)
