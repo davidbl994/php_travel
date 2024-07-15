@@ -182,14 +182,8 @@ class LoginPage:
         self.driver.execute_script(script)
 
     def run_axe_accessibility_checks(self):
-        # Initialize Axe for accessibility testing
         axe = Axe(self.driver)
         axe.inject()
-
-        # Run Axe accessibility checks
         results = axe.run()
-
-        # Save results to a file (optional)
         axe.write_results(results, 'axe-results-screen-reader.json')
-
         return results
