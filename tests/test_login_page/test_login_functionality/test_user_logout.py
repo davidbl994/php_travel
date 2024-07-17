@@ -1,4 +1,3 @@
-import time
 from pages.dashboard_page import DashboardPage
 from pages.search_page import SearchPage
 from pages.login_page import logger
