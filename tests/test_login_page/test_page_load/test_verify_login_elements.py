@@ -2,9 +2,7 @@ from utils.locators import Login
 from pages.login_page import logger
 
 def test_verify_login_elements(driver, login_page):
-    """
-    Test to verify the presence of essential elements on the login page.
-    """
+
     logger.info("Checking that the login button is loaded...")
     assert Login.LOGIN_BTN is not None, "Login button element is not found or defined"
     logger.info("Login button is successfully loaded!")
