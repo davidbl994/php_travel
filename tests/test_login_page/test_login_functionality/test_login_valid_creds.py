@@ -8,13 +8,9 @@ from utils.config import USERNAME, PASSWORD
 
 def test_login_page(driver, login_page):
 
-    logger.info("Inserting mail...")
     login_page.insert_email(USERNAME)
-    logger.info("Inserting password...")
     login_page.insert_password(PASSWORD)
-    logger.info("Selecting remember me checkbox...")
     login_page.select_remember_me()
-    logger.info("Clicking login button...")
     login_page.click_login_btn()
 
     dashboard_page = DashboardPage(driver)
