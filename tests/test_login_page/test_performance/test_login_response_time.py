@@ -6,14 +6,6 @@ from pages.login_page import logger
 from utils.config import USERNAME, PASSWORD
 
 def test_login_response_time(driver, login_page, dashboard_url):
-    """
-    Test to measure the response time of a successful login attempt and ensure it is within acceptable limits.
-
-    Args:
-        driver (WebDriver): The Selenium WebDriver instance.
-        login_url (str): The URL of the login page.
-        dashboard_url (str): The URL of the dashboard page, indicating successful login.
-    """
 
     login_page.insert_email(USERNAME)
     login_page.insert_password(PASSWORD)
@@ -27,7 +19,6 @@ def test_login_response_time(driver, login_page, dashboard_url):
         login_response_time = end_time - start_time
         logger.info(f"Login response time: {login_response_time:.2f} seconds")
 
-        # Log performance entries
         logs = driver.get_log("performance")
         for entry in logs:
             log = json.loads(entry["message"])["message"]
