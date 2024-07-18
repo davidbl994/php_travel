@@ -4,20 +4,11 @@ from utils.config import USERNAME, PASSWORD
 
 def test_session_cookie_creation(driver, login_page, login_url):
 
-    logger.info("Inserting email...")
     login_page.insert_email(USERNAME)
-    logger.info("Email inserted")
-
     login_page.insert_password(PASSWORD)
-    logger.info("Password inserted")
-
-    logger.info("Clicking login button...")
     login_page.click_login_btn()
-    logger.info("Login button clicked")
 
-    logger.info("Opening Dashboard page...")
     dashboard_page = DashboardPage(driver)
-    logger.info("Dashboard page opened")
     dashboard_page.welcome_back_msg()
 
     logger.info("Deleting cookie...")
