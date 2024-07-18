@@ -3,13 +3,7 @@ import time
 from pages.login_page import logger
 
 def test_login_page_load_time(driver, login_url):
-    """
-    Test to measure the load time of the login page and ensure it is within acceptable limits.
 
-    Args:
-        driver (WebDriver): The Selenium WebDriver instance.
-        login_url (str): The URL of the login page.
-    """
     start_time = time.time()
     driver.get(login_url)
     end_time = time.time()
